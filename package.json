@@ -1,0 +1,24 @@
+{
+  "name": "merning2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start:merning2": " node ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marcode777/merning2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marcode777/merning2/issues"
+  },
+  "homepage": "https://github.com/Marcode777/merning2#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.1"
+  }
+}
