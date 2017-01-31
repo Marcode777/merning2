@@ -14,6 +14,11 @@
   <script type="text/babel">
 
 
+function Merning(){
+  return(
+    <h2>MERNING2</h2>
+  );
+}
 
 
 
@@ -64,8 +69,6 @@ function CreateMonster(props){
   );
 
 }
-
-
 
 
 
@@ -122,9 +125,12 @@ class App extends React.Component{
   render(){
     return(
       <div>
+        <Merning/>
         <Monstersdata name="kolokoyname" id="id of 0"/>
         <Monsterindexlist nickname="thisisanickname"/>
         <Monster  />
+        
+
         
       
         <MonsterList monsters={this.state.monsters}/>
