@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>MERNING2</title>
+  <script src="https://unpkg.com/react@15.3.1/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.min.js"></script>
+  <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+  <div id="example"></div>
+  <script type="text/babel">
+    const monsters = [
+  {
+    nickname: "Jersey Devil",
+    type: "American",
+    id:0
+  },
+  {
+    nickname: "Kolokoy",
+    type: "Philippine",
+    id:1
+  },
+  {
+    nickname: "Lochness",
+    type:"Scottish",
+    id:2
+  },
+  {
+    nickname: "Butch",
+    type:"'Murican",
+    id:3
+  }
+];
+
+const cities = [
+  {
+    cityname: "New York City",
+    rating: "A++",
+    id: 3
+  },
+  {
+    cityname: "Chicago",
+    rating: "A+",
+    id: 4
+  },
+  {
+    cityname: "Los Angeles",
+    rating: "A",
+    id: 5
+  }
+];
+
+
+
+
+
+
+
+
+
+function Monster(props){
+  return <h3> nickname: {props.nickname} type: {props.type} </h3>
+  };
+
+
+
+function MonsterList(props){
+  return(
+      <ul className="list-group" key={monsters.id}>
+        {props.monsters.map(Monster)}
+      </ul>
+    );
+}
+ 
+
+
+function CreateMonster(props){
+
+  const submit = () => {
+    const nicknameInput = document.querySelector('#nickname');
+    const typeInput = document.querySelector('#type');
+
+    props.onAddMonster({
+      nickname: nicknameInput.value,
+      type: typeInput.value
+    });
+
+    nicknameInput.value = "";
+    typeInput.value= "";
+  };
+
+  return(
+    <div style={{display: 'flex'}}>
+      <input id="nickname" className="form-control" placeholder="Nickname"/>
+      <input id="type" className="form-control" placeholder="type"/>
+      <button className="btn btn-primary" type="button" onClick={submit}>
+        Add Monster
+      </button>
+    </div>
+  );
+
+}
+
+
+
+
+
+function Monstersdata(props){
+  return <h3>The monster data is {props.name} {props.id}</h3>
+}
+
+function Monsterindexlist(props){
+  return <h3>The monsterindexlist has {props.nickname} </h3>;
+}
+
+
+
+
+
+
+
+
+class App extends React.Component{
+  componentWillMount(){
+    this.state = {monsters};
+
+  }
+
+  handleAddMonster(newMonster){
+    newMonster.id = this.state.monsters.length;
+
+    this.setState({
+      monsters: this.state.monsters.concat(newMonster)
+    });
+  }
+
+
+  render(){
+    return(
+      <div>
+        <Monstersdata name="kolokoyname" id="id of 0"/>
+        <Monsterindexlist nickname="thisisanickname"/>
+        <Monster  />
+        
+      
+        <MonsterList monsters={this.state.monsters}/>
+        <CreateMonster onAddMonster={this.handleAddMonster.bind(this)}/>
+      </div>
+    );
+  }
+};
+
+    ReactDOM.render(
+      <App/>,
+      document.getElementById("example")
+    );
+
+  </script>
+
+
+</body>
+</html>
