@@ -96,6 +96,8 @@
 // mention at 33:33 how the scripts in a deployed application might work
 // for scripts start, I used my own way out of necessity because 
 
+// PART 3, THE LAST AND MOST GLORIOUS STEP: UTILIZING MONGODB STARTS AT 35:47
+
 //THE WHOLE THING FINISHES AT 45:07
 
 
