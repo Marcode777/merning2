@@ -85,9 +85,16 @@
 //
 //in turn those specific props will be returned within the tags to be displayed, as in the case of the first element, nickname Jersey Devil and type American will be displayed
 //
-//
+// PART 1 IS INTRODUCING A FULLY CLIENT-SIDE IMPLEMENTATION JUST USING THE R IN OUR MERN STACK, THIS IS EVERYTHING PRIOR TO 25:11
 
 // PART 2 FOR EXPRESS AND NODE SERVER STARTS AT 25:11
+// monsters array moved from front end (index.html) to server (app.js)
+// class App now has constructor and also a this.state that equals an empty array of monsters, added before the componentWillMount() life cycle hook component
+// also componentWillMount() now has fetch ();
+// handleAddMonster() has now also been modified, it's the same function call, however, we've change the internals to use fetch ()
+
+// mention at 33:33 how the scripts in a deployed application might work
+// for scripts start, I used my own way out of necessity because 
 
 //THE WHOLE THING FINISHES AT 45:07
 
