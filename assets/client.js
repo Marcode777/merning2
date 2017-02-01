@@ -106,13 +106,7 @@ class App extends React.Component{
     return(
       <div>
         <Merning/>
-        <Monstersdata name="kolokoyname" id="id of 0"/>
-        <Monsterindexlist nickname="thisisanickname"/>
-        <Monster  />
-        
 
-        
-      
         <MonsterList monsters={this.state.monsters}/>
         <CreateMonster onAddMonster={this.handleAddMonster.bind(this)}/>
       </div>

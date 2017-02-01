@@ -15,35 +15,6 @@ const Monster = mongoose.model('Monster', monsterSchema);
 
 
 
-    const monsters = [
-  {
-    nickname: "Jersey Devil",
-    type: "American",
-    id:0
-  },
-  {
-    nickname: "Kolokoy",
-    type: "Philippine",
-    id:1
-  },
-  {
-    nickname: "Lochness",
-    type:"Scottish",
-    id:2
-  },
-  {
-    nickname: "Butch",
-    type:"'Murican",
-    id:3
-  },
-  {
-    nickname: "The Majestic",
-    type:"Majestic",
-    id:4
-  }
-];
-
-
 
 const app = express();
 
@@ -54,14 +25,14 @@ app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
   try{
-    mongoose.connect('mongodb://localhost/merning');
+    mongoose.connect('mongodb://localhost/monsters');
     console.log('connected to MongoDB!!!');
   } catch (e) {
     console.log('ERROR: was not able to connect to MongoDB. Check to see if it is running. To run MongoDB, run command, mongod');
     process.exit(1);
   }
 
-app.use('/assets', express.static(path.resolve('merning2/assets'), {maxAge: '30 days'}));
+app.use('/assets', express.static(path.resolve('./assets'), {maxAge: '30 days'}));
 
 app.get('/monsters', (req, res) => {
   Monster.find((err, monsters) => {
@@ -82,7 +53,7 @@ app.post('/monsters', (req, res) => {
 });
 
 app.use(function(req, res){
-  res.sendFile(__dirname + '/assets/client.js');
+  res.sendFile(__dirname + '/index.html');
 });
 
 const server = app.listen('7070', function(){

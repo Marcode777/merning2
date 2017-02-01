@@ -94,12 +94,14 @@
 // handleAddMonster() has now also been modified, it's the same function call, however, we've change the internals to use fetch ()
 
 // mention at 33:33 how the scripts in a deployed application might work
-// for scripts start, I used my own way out of necessity because 
+// *for scripts start, I used my own "start:merning2": " node ./app.js" out of necessity because*
+//** for scripts start, actually went back to "start": "NODE_PATH=. node app.js" ** 
 
 // PART 3, THE LAST AND MOST GLORIOUS STEP: UTILIZING MONGODB STARTS AT 35:47
 // install MongoDB
 // We've reduced our application to a very straightforward, simple index.html, where we're now requesting a static asset from our server
 // we're no longer embedding the entire application, we can now use a bundle like webpack.config.js and it's in some sort of a distribution folder
+// also we have taken out our pre-made monsters array
 // a lot has remained unchanged, in our client side app, it's just been moved to a dedicated javascript folder, such as assets, and inside is a client.js file
 // you can tell that our components have remained unchanged, we're still requesting data from our server and posting data to our server
 // but we've added more to our node server, we've also installed mongoose

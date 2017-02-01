@@ -2,9 +2,9 @@
   "name": "merning2",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start:merning2": " node ./app.js"
+    "start": "NODE_PATH=. node app.js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +15,7 @@
   "bugs": {
     "url": "https://github.com/Marcode777/merning2/issues"
   },
+  "devDependencies": {},
   "homepage": "https://github.com/Marcode777/merning2#readme",
   "dependencies": {
     "babel-polyfill": "^6.22.0",
@@ -23,9 +24,5 @@
     "mongodb": "^2.2.22",
     "mongoose": "^4.8.1",
     "webpack": "^2.2.1"
-  },
-  "devDependencies": {
-    "babel-preset-env": "^1.1.8",
-    "babel-preset-react": "^6.22.0"
   }
 }
