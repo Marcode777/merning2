@@ -94,10 +94,59 @@
 // handleAddMonster() has now also been modified, it's the same function call, however, we've change the internals to use fetch ()
 
 // mention at 33:33 how the scripts in a deployed application might work
-// for scripts start, I used my own way out of necessity because 
+// *for scripts start, I used my own "start:merning2": " node ./app.js" out of necessity because*
+//** for scripts start, actually went back to "start": "NODE_PATH=. node app.js" ** 
 
 // PART 3, THE LAST AND MOST GLORIOUS STEP: UTILIZING MONGODB STARTS AT 35:47
+// install MongoDB
+// We've reduced our application to a very straightforward, simple index.html, where we're now requesting a static asset from our server
+// we're no longer embedding the entire application, we can now use a bundle like webpack.config.js and it's in some sort of a distribution folder
+// also we have taken out our pre-made monsters array
+// a lot has remained unchanged, in our client side app, it's just been moved to a dedicated javascript folder, such as assets, and inside is a client.js file
+// you can tell that our components have remained unchanged, we're still requesting data from our server and posting data to our server
+// but we've added more to our node server, we've also installed mongoose
+// also we are using app.use('/assets') 
+// we are have added using app.get('/monsters') with a MongoDB find command to the original app.get('/monsters')
+// and we have addes some changes to app.post('/monsters')
+// keep in mind that MongoDB will automatically provide a unique ID to each item added
 
+//There is an unexpected error here. Is it because I am not using webpack to bundle it?
+// I THINK IT HAS SOMETHING TO DO WITH THE TYPE SCRIPT IN THE SCRIPT TAG IN THE HTML: <script type="text/babel" src="assets/client.js"></script>
+// *FIGURED IT OUT WITH THE HELP OF AN EMAIL FROM THE VENERABLE ANDREW HANSEN HIMSELF, THE ORIGINATOR OF THE VERY TUTORIAL HIMSELF!*
+          // It seems there is an issue in your express config where node cannot find your assets folder. This line:
+
+          // `app.use(function(req, res){
+          //   res.sendFile(__dirname + '/index.html');
+          // });`
+
+          // Says "as a fallback, default to sending index.html if something is requested that isn't recognized"
+
+          // So when the browser is requesting assets/client.js, your server is sending the default file: index.html.
+
+          // I would make sure that this line is behaving correctly. :
+
+          // `app.use('/assets', express.static(path.resolve('merning2/assets'), {maxAge: '30 days'}));`
+
+          // you'll notice in my source code for this tutorial, I have a package.json script that declares where Node should look to resolve files.
+
+          // https://github.com/arahansen/mern-tutorial/blob/master/package.json#L13
+
+          // Hope this helps!
+
+          // -Andrew
+
+
+//     it has to do with the app.js and specifically the line of 
+//       app.use(function(req, res){
+//         res.sendFile(__dirname + '/index.html');
+//       });
+//  so, '/index.html' was changed to '/assets/client.js' and the errors were cleared and something was being able to be served.
+// this is because clearly, in the index.html file, the <script type="text/babel" src="assets/client.js"></script>, clearly states that the src="assets/clients.js"
+
+
+// We Are Moving Forward.
+
+// I FINALLY SOLVED IT! The assets path from this line: "app.use('/assets', express.static(path.resolve('merning2/assets'), {maxAge: '30 days'}));" had to be changed to, "app.use('/assets', express.static(path.resolve('./assets'), {maxAge: '30 days'}));"
 //THE WHOLE THING FINISHES AT 45:07
 
 
